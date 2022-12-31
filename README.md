@@ -40,9 +40,14 @@ void Unprotect(DWORD Address, int RetNum)
 
 auto hook_ret_check()->int
 {
+	DWORD retcheck;
+	ret_check::ret_check = retcheck;
+
 	// :troll:
 	printf(_("[+] ret_check minhook function\n"));
 	printf(_("[~] bypassing ret_check\n"));
+
+	Disable_Ret(retcheck, NULL); // Disabling Ret_Check
 
 	// returning false = undetected ultra high quality bypass (i'm a dunk nigger)
 	return 0;
