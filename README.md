@@ -4,6 +4,10 @@ RetCheck is basically a Roblox Check that prevents you from doing basic things l
 
 <br>
 
+Feel free to use this to bypass ret_check.
+
+<br>
+
 This is a simple Ret_Check hooking that i reworked, credits: ilkay#4710 (the guy with who i'm currently making a roblox exec)
 <br>
 ```cpp
