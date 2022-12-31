@@ -8,6 +8,29 @@ Feel free to use this to bypass ret_check.
 
 <br>
 
+
+```cpp
+// M3m0ryH4cker#7089
+void Unprotect(DWORD Address, int RetNum)
+{
+	DWORD Function = Address;
+	for (int i = 0; i < RetNum; Function++)
+	{
+		char AddressOPCode = *(char*)Function;
+		if (AddressOPCode == 0x72) /* Checks if the address is a JB. */
+		{
+			char AddressSecondOPCode = *(char*)(Function + 0x12);
+			if (AddressSecondOPCode == 0x72)
+			{
+				WriteProcessMemory(GetCurrentProcess(), *(LPVOID*)&Function, "\xEB", 1, NULL);
+				i++;
+			}
+		}
+	}
+}
+```
+
+
 This is a simple Ret_Check hooking that i reworked, credits: ilkay#4710 (the guy with who i'm currently making a roblox exec)
 <br>
 ```cpp
