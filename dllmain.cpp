@@ -43,8 +43,8 @@ auto hook_ret_check()->int
 	printf(_("[+] ret_check minhook function\n"));
 	printf(_("[~] bypassing ret_check\n"));
 
-	// returning true because i'm a dunk nigger.
-	return TRUE;
+	// returning false = undetected ultra high quality bypass (i'm a dunk nigger)
+	return 0;
 }
 
 /* Hooking ret_check using an external hook because my parents left me when i was kid + they adopted me. */
