@@ -5,6 +5,24 @@
 #include "sigscan.h"
 #include "encrypt.h"
 
+void Disable_Ret(DWORD Address, int RetNum)
+{
+	DWORD Function = Address;
+	for (int i = 0; i < RetNum; Function++)
+	{
+		char AddressOPCode = *(char*)Function;
+		if (AddressOPCode == 0x72) /* Checks if the address is a JB. */
+		{
+			char AddressSecondOPCode = *(char*)(Function + 0x12);
+			if (AddressSecondOPCode == 0x72)
+			{
+				WriteProcessMemory(GetCurrentProcess(), *(LPVOID*)&Function, "\xEB", 1, NULL);
+				i++;
+			}
+		}
+	}
+}
+
 /* 
 	Roblox ret_check bypass
 	Credits: Ilkay & Roka (reworking) <3
@@ -39,9 +57,14 @@ auto final_scene()->int
 
 auto hook_ret_check()->int
 {
+	DWORD retcheck;
+	ret_check::ret_check = *(DWORD*)retcheck;
+
 	// :troll:
 	printf(_("[+] ret_check minhook function\n"));
 	printf(_("[~] bypassing ret_check\n"));
+
+	Disable_Ret(retcheck, 1); // Disabling Ret_Check
 
 	// returning false = undetected ultra high quality bypass (i'm a dunk nigger)
 	return 0;
