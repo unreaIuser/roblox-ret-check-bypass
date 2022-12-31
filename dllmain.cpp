@@ -19,7 +19,7 @@ namespace ret_check
 	using ret_check_def = int(*)();
 
 	// Get base address, this is an internal dll so we just use GetModuleHandleA.
-	uintptr_t base = reinterpret_cast<uintptr_t>(GetModuleHandleA(nullptr));
+	uintptr_t base = reinterpret_cast<uintptr_t>(SAFE_CALL(GetModuleHandleA)((nullptr))); // Using SAFE_CALL because i'm a black coton farmer :pray:
 
 	// Ret_check address offset.
 	uintptr_t ret_check(0x133337);
