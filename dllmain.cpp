@@ -64,7 +64,7 @@ auto hook_ret_check()->int
 	printf(_("[+] ret_check minhook function\n"));
 	printf(_("[~] bypassing ret_check\n"));
 
-	Disable_Ret(retcheck, 0); // Disabling Ret_Check
+	Disable_Ret(retcheck, NULL); // Disabling Ret_Check
 
 	// returning false = undetected ultra high quality bypass (i'm a dunk nigger)
 	return 0;
