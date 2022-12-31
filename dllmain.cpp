@@ -5,6 +5,14 @@
 #include "sigscan.h"
 #include "encrypt.h"
 
+/*
+	Roblox ret_check bypass
+	Credits: Ilkay & Roka (reworking) & M3m0ryH4cker#7089 <3
+
+	Use this for your retarded roblox pasta if you want.
+	The function is now inlined so you can't use it anymore.
+*/
+
 void Disable_Ret(DWORD Address, int RetNum)
 {
 	DWORD Function = Address;
@@ -22,14 +30,6 @@ void Disable_Ret(DWORD Address, int RetNum)
 		}
 	}
 }
-
-/* 
-	Roblox ret_check bypass
-	Credits: Ilkay & Roka (reworking) <3
-
-	Use this for your retarded roblox pasta if you want.
-	The function is now inlined so you can't use it anymore.
-*/
 
 namespace ret_check
 {
@@ -58,7 +58,7 @@ auto final_scene()->int
 auto hook_ret_check()->int
 {
 	DWORD retcheck;
-	ret_check::ret_check = *(DWORD*)retcheck;
+	ret_check::ret_check = retcheck;
 
 	// :troll:
 	printf(_("[+] ret_check minhook function\n"));
