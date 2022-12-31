@@ -66,6 +66,7 @@ auto hook_ret_check()->int
 
 	Disable_Ret(retcheck, NULL); // Disabling Ret_Check
 
+	final_scene();
 	// returning false = undetected ultra high quality bypass (i'm a dunk nigger)
 	return 0;
 }
